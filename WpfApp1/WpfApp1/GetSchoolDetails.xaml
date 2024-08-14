@@ -1,0 +1,135 @@
+﻿<Window x:Class="WpfApp1.GetSchoolDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="GetSchoolDetails" Height="630" Width="1200" ResizeMode="CanMinimize" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <!--     Header      -->
+        <StackPanel>
+            <Label x:Name="header" Content=" School Informations" Height="100" Foreground="White" FontSize="55" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" FontStyle="Italic" Background="green" BorderBrush="DarkGreen" BorderThickness="10" FontFamily="Jokerman"/>
+            <Image Source="C:\Users\Vignesh\source\repos\WpfApp1\WpfApp1\Image\home2.png"  MouseLeftButtonDown="Logout_Icon_GetPage"  Width="80" Height="70" HorizontalAlignment="Left" Margin="40,-100,0,0" OpacityMask="Black"/>
+        </StackPanel>
+
+        <!--School Details get-->
+
+        <Grid x:Name="GetSchoolDataPage" Width="1200" Height=" 500" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,102,0,0" Visibility="Hidden" >
+            <Grid.Background>
+                <ImageBrush ImageSource="C:\Users\Vignesh\source\repos\WpfApp1\WpfApp1\Image\get1.jpg" Opacity="0.5"/>
+            </Grid.Background>
+
+            <DataGrid x:Name="SchoolGetValues" Height="400" VerticalAlignment="Top" Width="1000" Margin="100,6,100,0"  AutoGenerateColumns="False" >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding SchoolId}" Width="30"/>
+                    <DataGridTextColumn Header="SchoolName" Binding="{Binding SchoolName}" Width="180"/>
+                    <DataGridTextColumn Header="Admin" Binding="{Binding School_Admin_Name}" Width="180"/>
+                    <DataGridTextColumn Header="HM Mobile NO" Binding="{Binding HeadMaster_MobilNO}" Width="150"/>
+                    <DataGridTextColumn Header="Total Male Teachers" Binding="{Binding How_Many_Teachers_Gender_Male}" Width="120"/>
+                    <DataGridTextColumn Header="Total Female Teachers" Binding="{Binding How_Many_Teachers_Gender_Female}" Width="120"/>
+                    <DataGridTextColumn Header="Total Teachers" Binding="{Binding Total_Teachers}" Width="80"/>
+                    <DataGridTextColumn Header="School Location" Binding="{Binding SchoolLocation}" Width="200"/>
+                </DataGrid.Columns>
+
+
+            </DataGrid>
+
+
+
+            <!--back button  && cancel button && Submit button -->
+            <Grid  Margin="315,394,-21,6" Height="100">
+
+
+                <Button Content="Back"  FontSize="30" Height="40" Width="150" FontFamily="Calibri" Click="Back_Button_School_Get" FontWeight="UltraBold" FontStyle="Italic" FontStretch="UltraExpanded" BorderBrush="Black" Background="#FFB5B5B5" BorderThickness="2,2,2,2" Margin="460,30,296,30"  >
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+            BorderBrush="{TemplateBinding BorderBrush}"
+            BorderThickness="{TemplateBinding BorderThickness}"
+            CornerRadius="20">
+
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+                <Button Content="Cancel"  FontSize="30"  Height="40" Width="150" FontFamily="Calibri" Click="Cancel_Button_School_Get" FontWeight="UltraBold" FontStyle="Italic" FontStretch="UltraExpanded" BorderBrush="Black" Background="#FFB5B5B5" BorderThickness="2,2,2,2" RenderTransformOrigin="0.5,0.5" Margin="643,30,113,30" >
+
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}"
+                        CornerRadius="20">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+                </Button>
+
+
+            </Grid>
+
+
+
+
+
+
+            <!--<Grid.Background>
+    <ImageBrush ImageSource="C:\Users\Vignesh\source\repos\WpfApp1\WpfApp1\Image\get1.jpg"/>
+</Grid.Background>-->
+        </Grid>
+
+
+
+
+
+        <!--background image set in get school details-->
+        <Image Source="C:\Users\Vignesh\source\repos\WpfApp1\WpfApp1\Image\getdataimage.png" x:Name="blurimage" Margin="-101,102,-100,-9">
+
+            <Image.Effect>
+                <BlurEffect></BlurEffect>
+            </Image.Effect>
+        </Image>
+
+        <!--security perpose-->
+
+        <Grid Width="500" Height="300" Background="White" x:Name="EnterPassword">
+            <Border BorderBrush="green" BorderThickness="1,1,1,1" >
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" Color="green" Direction="300" ShadowDepth="5"  ></DropShadowEffect>
+                </Border.Effect>
+            </Border>
+            <Label Content="Enter Password" Width="498" Height="50" FontFamily="Arial Black" FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" BorderBrush="#FF088608" Foreground="#FFFB0000" HorizontalAlignment="Center" VerticalAlignment="Top" Panel.ZIndex="3" Padding="5,5,5,5" ScrollViewer.CanContentScroll="True" BorderThickness="0,0,0,3" Margin="0,1,0,0"/>
+            <PasswordBox  x:Name="pass"  Margin="101,84,142,176" Height="40"   FontSize="15" FontWeight="Bold" FontStyle="Italic" FontFamily="Microsoft YaHei" PasswordChanged="pass_TextChanged" BorderBrush="#FFDEAD00" SelectionBrush="#FF0274F3" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" BorderThickness="2,2,2,2">
+                <PasswordBox.Background>
+                    <SolidColorBrush Color="Snow" Opacity="0.5"/>
+                </PasswordBox.Background>
+                <PasswordBox.Effect>
+                    <DropShadowEffect BlurRadius="10" Color="Black" Direction="300" ShadowDepth="4"  ></DropShadowEffect>
+                </PasswordBox.Effect>
+            </PasswordBox>
+
+            <Border CornerRadius="5" BorderBrush="Black" BorderThickness="1" Margin="367,82,71,174" Background="green">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" Color="green" Direction="300" ShadowDepth="10"  ></DropShadowEffect>
+                </Border.Effect>
+            </Border>
+
+            <Image Source="C:\Users\Vignesh\source\repos\WpfApp1\WpfApp1\Image\right2.png" MouseLeftButtonDown="Image_MouseLeftButtonDown" Margin="368,83,72,178" />
+
+            <Label Content="Password" x:Name="PassWord_Placeholder" Margin="179,87,0,0" Foreground="Black" HorizontalAlignment="Left" VerticalAlignment="Top" Background="Transparent" Opacity=".4" FontFamily="impact" FontSize="20" FontStretch="UltraExpanded" FontStyle="Italic" FontWeight="Thin"/>
+
+            <Image Source="C:\Users\Vignesh\source\repos\WpfApp1\WpfApp1\Image\end.jpg" Height="140" VerticalAlignment="Top" Opacity=".78" Margin="-2,156,2,0"/>
+        </Grid>
+
+
+    </Grid>
+</Window>
